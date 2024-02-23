@@ -9,6 +9,12 @@
                 #{updateUser}, #{status})
 
     </insert>
+    <delete id="deleteDishByIds">
+        delete from dish where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
     <select id="pageQuery" resultType="com.sky.entity.Dish">
         select * from dish
     </select>
