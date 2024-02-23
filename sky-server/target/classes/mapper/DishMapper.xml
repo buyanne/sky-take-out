@@ -9,4 +9,7 @@
                 #{updateUser}, #{status})
 
     </insert>
+    <select id="pageQuery" resultType="com.sky.entity.Dish">
+        select * from dish
+    </select>
 </mapper>

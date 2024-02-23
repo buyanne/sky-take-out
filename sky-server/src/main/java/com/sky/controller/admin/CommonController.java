@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
-@Api("通用接口")
+@Api(tags = "通用接口")
 @RequestMapping("/admin/common")
 public class CommonController {
 

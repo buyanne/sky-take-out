@@ -11,6 +11,7 @@ import com.sky.result.Result;
 import com.sky.service.EmployeeService;
 import com.sky.utils.JwtUtil;
 import com.sky.vo.EmployeeLoginVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/employee")
 @Slf4j
+@Api(tags = "员工管理")
 public class EmployeeController {
 
     @Autowired
@@ -91,16 +93,16 @@ public class EmployeeController {
 
     @PostMapping("/status/{status}")
     @ApiOperation("禁用和启用")
-    public Result updateStatus(@PathVariable Integer status,Long id){
-        log.info("启用禁用员工账号：{}，{}",status,id);
-        employeeService.updataStatus(status,id);
+    public Result updateStatus(@PathVariable Integer status, Long id) {
+        log.info("启用禁用员工账号：{}，{}", status, id);
+        employeeService.updataStatus(status, id);
 
         return Result.success();
     }
 
     @PutMapping
     @ApiOperation("编辑员工信息")
-    public Result updateEmployee(@RequestBody EmployeeDTO employeeDTO){
+    public Result updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
         employeeService.update(employeeDTO);
 
         return Result.success();
@@ -108,8 +110,8 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     @ApiOperation("根据id获得员工信息")
-    public Result<Employee> getEmployeeById(@PathVariable Long id)  {
-        Employee employee= employeeService.getEmployeeById(id);
+    public Result<Employee> getEmployeeById(@PathVariable Long id) {
+        Employee employee = employeeService.getEmployeeById(id);
         return Result.success(employee);
     }
 
